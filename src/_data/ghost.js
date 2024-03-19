@@ -62,6 +62,7 @@ module.exports = async () => {
       .filter(post => post.primary_author.id === author.id)
       .map(post => {
         return {
+          id: post.id,
           title: post.title,
           slug: post.slug,
           path: post.path,
@@ -106,6 +107,7 @@ module.exports = async () => {
       .filter(post => post.tags.map(postTag => postTag.slug).includes(tag.slug))
       .map(post => {
         return {
+          id: post.id,
           title: post.title,
           slug: post.slug,
           path: post.path,
