@@ -12,7 +12,9 @@
         <image>
             <url>https://cdn.freecodecamp.org/universal/favicons/favicon.png</url>
             {% set metaTitle %}{% t 'meta-tags:title' %}{% endset %}
-            <title>{{ (metaTitle | escape) if feed.path === "/" else (feed.name | safe + " - freeCodeCamp.org") }}</title>
+            <title>
+                <![CDATA[ {{ "freeCodeCamp.org" if feed.path === "/" else (feed.name | safe + " - freeCodeCamp.org") }} ]]>
+            </title>
             <link>{{ site.url + "/" }}</link>
         </image>
         <generator>Eleventy</generator>
