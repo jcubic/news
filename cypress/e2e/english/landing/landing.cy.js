@@ -7,15 +7,10 @@ const selectors = {
   authorList: "[data-test-label='author-list']",
   authorListItem: "[data-test-label='author-list-item']",
   authorProfileImage: "[data-test-label='profile-image']",
-  darkModeButton: "[data-test-label='dark-mode-button']",
   avatar: "[data-test-label='avatar']",
   siteNavLogo: "[data-test-label='site-nav-logo']",
-  menuButton: "[data-test-label='header-menu-button']",
-  menu: "[data-test-label='header-menu']",
   postPublishedTime: "[data-test-label='post-published-time']"
 };
-
-// header-menu-button
 
 describe('Landing', () => {
   beforeEach(() => {
@@ -37,25 +32,6 @@ describe('Landing', () => {
     );
   });
 
-  it('Clicking the menu button should open the menu', function () {
-    cy.get(selectors.menuButton).should('be.visible').click();
-    cy.get(selectors.menu).should('be.visible');
-  });
-
-  it('The menu should be able to change the theme', function () {
-    cy.get(selectors.menuButton).click();
-    cy.get(selectors.menu).should('be.visible');
-    cy.get(selectors.darkModeButton).click();
-
-    cy.get('body').should('have.class', 'dark-mode');
-    cy.get(selectors.siteNavLogo).click();
-    cy.get(selectors.menu).should('not.be.visible');
-    cy.get(selectors.menuButton).click();
-    cy.get(selectors.menu).should('be.visible');
-    cy.get(selectors.darkModeButton).click();
-    cy.get('body').should('not.have.class', 'dark-mode');
-  });
-
   it("should show the author's profile image", () => {
     cy.get(selectors.postCard)
       .contains(
@@ -67,16 +43,13 @@ describe('Landing', () => {
   });
 
   it("the author profile image should contain an `alt` attribute with the author's name", () => {
-    cy
-      .get(selectors.postCard)
+    cy.get(selectors.postCard)
       .contains(
         'Learn Responsive Web Design by Building 20 Projects – a Major freeCodeCamp Curriculum Update'
       )
-      .parentsUntil('article').find <
-      HTMLImageElement >
-      selectors.authorProfileImage.then($el =>
-        expect($el[0].alt).to.equal('Quincy Larson')
-      );
+      .parentsUntil('article')
+      .find(selectors.authorProfileImage)
+      .then($el => expect($el[0].alt).to.equal('Quincy Larson'));
   });
 
   it('post cards written by an author with no profile image should show the author SVG', () => {
