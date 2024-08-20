@@ -32,16 +32,13 @@ describe('Search results', () => {
   });
 
   it("the author profile image should contain an `alt` attribute with the author's name", () => {
-    cy
-      .get(selectors.postCard)
+    cy.get(selectors.postCard)
       .contains(
         'freeCodeCamp Just Got a Million Dollar Donation from an Alum to Build a Carbon-Neutral Web3 Curriculum'
       )
-      .parentsUntil('article').find <
-      HTMLImageElement >
-      selectors.authorProfileImage.then($el =>
-        expect($el[0].alt).to.equal('Quincy Larson')
-      );
+      .parentsUntil('article')
+      .find(selectors.authorProfileImage)
+      .then($el => expect($el[0].alt).to.equal('Quincy Larson'));
   });
 
   it('post cards written by an author with no profile image should show the author SVG', () => {

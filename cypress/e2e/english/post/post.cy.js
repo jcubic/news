@@ -114,15 +114,13 @@ describe('Post', () => {
       });
 
       it('posts with no feature image should fall back to the default fCC indigo image', () => {
-        cy.get <
-          HTMLImageElement >
-          selectors.featureImage
-            .should('exist')
-            .then($el =>
-              expect($el[0].src).to.equal(
-                'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
-              )
-            );
+        cy.get(selectors.featureImage)
+          .should('exist')
+          .then($el =>
+            expect($el[0].src).to.equal(
+              'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
+            )
+          );
       });
     });
 
@@ -228,20 +226,16 @@ describe('Post', () => {
       });
 
       it("should show a default image from Hashnode's CDN in the bylines at the top and bottom of the article", () => {
-        cy.get <
-          HTMLImageElement >
-          selectors.authorProfileImage.then($el => {
-            expect($el[0].src).to.include('cdn.hashnode.com');
-            expect($el[0].tagName.toLowerCase()).to.equal('img');
-          });
+        cy.get(selectors.authorProfileImage).then($el => {
+          expect($el[0].src).to.include('cdn.hashnode.com');
+          expect($el[0].tagName.toLowerCase()).to.equal('img');
+        });
       });
 
       it("the default image in the bylines at the top and bottom of the article should contain an `alt` attribute with the author's name", () => {
-        cy.get <
-          HTMLImageElement >
-          selectors.authorProfileImage.then($el =>
-            expect($el[0].alt).to.equal('Dionysia Lemonaki')
-          );
+        cy.get(selectors.authorProfileImage).then($el =>
+          expect($el[0].alt).to.equal('Dionysia Lemonaki')
+        );
       });
     });
 
@@ -251,15 +245,13 @@ describe('Post', () => {
       });
 
       it('posts with no feature image should fall back to the default fCC indigo image', () => {
-        cy.get <
-          HTMLImageElement >
-          selectors.featureImage
-            .should('exist')
-            .then($el =>
-              expect($el[0].src).to.equal(
-                'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
-              )
-            );
+        cy.get(selectors.featureImage)
+          .should('exist')
+          .then($el =>
+            expect($el[0].src).to.equal(
+              'https://cdn.freecodecamp.org/platform/universal/fcc_meta_1920X1080-indigo.png'
+            )
+          );
       });
     });
 
