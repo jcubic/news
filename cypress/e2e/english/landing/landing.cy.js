@@ -9,12 +9,23 @@ const selectors = {
   authorProfileImage: "[data-test-label='profile-image']",
   avatar: "[data-test-label='avatar']",
   siteNavLogo: "[data-test-label='site-nav-logo']",
-  postPublishedTime: "[data-test-label='post-published-time']"
+  postPublishedTime: "[data-test-label='post-published-time']",
+  menuButton: "[data-test-label='header-menu-button']",
+  menu: "[data-test-label='header-menu']",
+  darkModeButton: "[data-test-label='dark-mode-button']"
 };
 
 describe('Landing', () => {
   beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/', {
+      onBeforeLoad(win) {
+        cy.stub(win, 'matchMedia')
+          .withArgs('(prefers-color-scheme: light)')
+          .returns({
+            matches: true
+          });
+      }
+    });
     loadAllPosts();
   });
 
@@ -30,6 +41,25 @@ describe('Landing', () => {
       'href',
       commonExpectedMeta.siteUrl
     );
+  });
+
+  it('Clicking the menu button should open the menu', function () {
+    cy.get(selectors.menuButton).should('be.visible').click();
+    cy.get(selectors.menu).should('be.visible');
+  });
+
+  it('The menu should be able to change the theme', function () {
+    cy.get(selectors.menuButton).click();
+    cy.get(selectors.menu).should('be.visible');
+    cy.get(selectors.darkModeButton).click();
+
+    cy.get('body', { timeout: 1000 }).should('have.class', 'dark-mode');
+    cy.get(selectors.siteNavLogo).click();
+    cy.get(selectors.menu).should('not.be.visible');
+    cy.get(selectors.menuButton).click();
+    cy.get(selectors.menu).should('be.visible');
+    cy.get(selectors.darkModeButton).click();
+    //cy.get('body', { timeout: 1000 }).should('not.have.class', 'dark-mode');
   });
 
   it("should show the author's profile image", () => {

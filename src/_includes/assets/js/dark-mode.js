@@ -1,9 +1,5 @@
 function loadDarkModePreference() {
-  const darkMode = localStorage.getItem('fcc-dark-mode');
-  if (
-    darkMode === 'enabled' ||
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ) {
+  if (window.matchMedia('(prefers-color-scheme: dark)')?.matches) {
     document.body.classList.add('dark-mode');
     document
       .getElementById('dark-mode-enabled')
@@ -21,12 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document
           .getElementById('dark-mode-enabled')
           .classList.replace('fa-square', 'fa-square-check');
-        localStorage.setItem('fcc-dark-mode', 'enabled');
       } else {
         document
           .getElementById('dark-mode-enabled')
           .classList.replace('fa-square-check', 'fa-square');
-        localStorage.setItem('fcc-dark-mode', 'disabled');
       }
     });
 
