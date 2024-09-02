@@ -526,74 +526,6 @@ h6 {
 }
 
 /**
- * Site header sub menu items
- */
-.nav-link {
-  padding: 2px 15px 0;
-  display: flex;
-  align-items: center;
-  color: var(--gray00);
-  background-color: var(--gray90);
-  white-space: normal;
-  min-height: var(--header-sub-element-size);
-  width: 100%;
-  border: none;
-  height: 100%;
-}
-
-.nav-link:focus {
-  outline-offset: -3px;
-}
-
-.nav-link:focus:not(:focus-visible) {
-  background-color: inherit;
-  color: inherit;
-}
-
-.nav-link:not([aria-disabled='true']):hover,
-.nav-link:focus-visible {
-  color: var(--gray90);
-  background-color: var(--gray10);
-}
-
-.nav-link:not([aria-disabled='true']):hover {
-  text-decoration: none;
-  cursor: pointer;
-  outline-color: transparent !important;
-}
-
-button.nav-link[aria-disabled='true'] {
-  background-color: inherit;
-}
-
-li > button.nav-link-signout:not([aria-disabled='true']):is(:hover, :focus) {
-  background-color: var(--danger-background);
-  color: var(--danger-color);
-}
-
-.nav-link .fa-external-link-alt {
-  color: var(--gray45);
-}
-
-.nav-link-supporter {
-  color: var(--yellow-light);
-  background: var(--yellow-dark);
-}
-
-.nav-link-supporter:hover,
-.nav-link-supporter:active,
-.nav-link-supporter:focus,
-.nav-link-supporter:focus-visible {
-  color: var(--yellow-dark) !important;
-  background: var(--yellow-light) !important;
-}
-
-.nav-link-supporter svg {
-  height: auto;
-  width: 1em;
-}
-
-/**
  * Check mark for current language
  */
 .nav-lang-list-option[aria-current='true'] {
@@ -606,6 +538,13 @@ li > button.nav-link-signout:not([aria-disabled='true']):is(:hover, :focus) {
 .nav-lang-list-option[aria-current='true']:hover,
 .nav-lang-list-option[aria-current='true']:focus-visible {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='32' height='32' preserveAspectRatio='xMidYMid meet' viewBox='0 0 16 16'%3E%3Cg fill='currentColor'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06a.733.733 0 0 1 1.047 0l3.052 3.093l5.4-6.425a.247.247 0 0 1 .02-.022z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E") !important;
+}
+
+/**
+ * Sub menu dividers
+ */
+.nav-line {
+  border-top: 0.0625rem solid var(--gray45);
 }
 
 /**
@@ -685,14 +624,6 @@ li > button.nav-link-signout:not([aria-disabled='true']):is(:hover, :focus) {
   #universal-nav .login-btn-icon {
     display: none;
   }
-}
-
-/**
- * Link items with icon or checkboxes
- */
-.nav-link-flex {
-  display: flex;
-  justify-content: space-between;
 }
 
 .display-menu {

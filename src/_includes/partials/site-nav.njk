@@ -1,4 +1,4 @@
-<nav class="site-nav nav-padding">
+<nav class="site-nav nav-padding universal-nav">
     <div class="site-nav-left">
         {% include "partials/search-bar.njk" %}
     </div>
@@ -6,18 +6,17 @@
         <a class="site-nav-logo" href="{{ site.url }}" data-test-label="site-nav-logo"><img src="{{ site.logo }}" alt="{{ site.title }}" /></a>
     </div>
     <div class="site-nav-right">
-       <div class="nav-group">
-        <a
-          class="nav-link"
+    <div class="nav-group">
+      <a
+          class="toggle-button-nav"
           id="nav-donate"
           rel="noopener noreferrer"
           href="{% t 'links:donate' %}"
           target="_blank"
           data-test-label="donate-button"
       >{% t 'buttons.donate' %}</a>
-
-      <button
-      class='exposed-button-nav'
+    <button
+      class='toggle-button-nav'
       id='toggle-button-nav'
       data-test-label='header-menu-button'
     >
@@ -26,15 +25,16 @@
         <span class='sr-only'>{% t 'buttons.menu' %}</span>
       </span>
       <span class='menu-btn-text'>{% t 'buttons.menu' %}</span>
-    </button>
-
-      <ul
+      </button>
+      </div>
+    </div>
+    <ul
       aria-labelledby='toggle-button-nav'
       data-test-label='header-menu'
       class="nav-list"
       id="nav-list">
        <li key='learn'>
-        <a class='nav-link' href="{% t 'links:nav:learn' %}"/>
+        <a class='nav-link nav-link-flex nav-link-header' href="{% t 'links:nav:learn' %}"/>
            <span>{% t 'buttons.curriculum' %}</span>
          <span class='sr-only'>{% t 'aria.opens-new-window' %}</span>
           <i class="fa fa-external-link" aria-hidden="true"></i>
@@ -42,16 +42,11 @@
       </li>
 
       <li key='dark-mode' class='nav-line'></li>
-      <button class="nav-link" id="toggle-dark-mode" data-test-label="dark-mode-button">
+      <button class="nav-link nav-link-flex nav-link-header" id="toggle-dark-mode" data-test-label="dark-mode-button">
         <span>{% t 'buttons.toggle-dark-mode' %}</span>
          <i id="dark-mode-enabled" class="fa fa-square" aria-hidden="true"></i>
       </button>
       </li>
 
     </ul>
-
-       </div>
-
-    </div>
-
 </nav>

@@ -301,7 +301,7 @@ a.nav-forum {
   background-color: #feac32;
   background-image: linear-gradient(#fecc4c, #ffac33);
   border: 3px solid #feac32;
-  color: var(--primary-color);
+  color: var(--gray90);
 }
 
 .toggle-button-nav:hover,
@@ -311,7 +311,7 @@ a.nav-forum {
   border-width: 3px;
   border-color: #f1a02a;
   background-image: none;
-  color: var(--primary-color);
+  color: var(--gray90);
   text-decoration: none;
 }
 
@@ -487,7 +487,7 @@ a.nav-forum {
 }
 
 .post-card-title a {
-  color: var(--gray90);
+  color: var(--primary-color);
 }
 
 .post-card-content {
