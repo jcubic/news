@@ -2,16 +2,20 @@
  * Site header sub menu items
  */
 .nav-link {
-  padding: 2px 15px 0;
-  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  color: var(--gray00);
   background-color: var(--gray90);
-  white-space: normal;
-  min-height: var(--header-sub-element-size);
-  width: 100%;
   border: none;
+  color: var(--gray00);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   height: 100%;
+  min-height: var(--header-sub-element-size);
+  padding: 2px 15px 0;
+  white-space: normal;
+  width: 100%;
 }
 
 .nav-link:focus {
@@ -95,4 +99,14 @@ li > button.nav-link-signout:not([aria-disabled='true']):is(:hover, :focus) {
 
 .display-menu::-webkit-scrollbar {
   display: none;
+}
+
+@media (min-width: 980px) {
+  .nav-list {
+    max-width: 25rem;
+  }
+}
+
+.nav-list li {
+  margin: auto;
 }

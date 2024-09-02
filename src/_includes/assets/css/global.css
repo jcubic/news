@@ -490,12 +490,6 @@ h6 {
   width: 100%;
 }
 
-@media (min-width: 980px) {
-  .nav-list {
-    max-width: 15rem;
-  }
-}
-
 /**
  * Site header language list
  */
@@ -624,27 +618,4 @@ h6 {
   #universal-nav .login-btn-icon {
     display: none;
   }
-}
-
-.display-menu {
-  -ms-overflow-style: none;
-  display: block;
-  max-height: calc(
-    100vh - var(--header-height) - var(--header-sub-element-size)
-  );
-  overflow-y: auto;
-  scrollbar-width: none;
-  text-align: left;
-  top: calc(var(--header-height) + var(--header-sub-element-size));
-}
-
-@media (min-width: 980px) {
-  .display-menu {
-    max-height: calc(100vh - var(--header-height));
-    top: var(--header-height);
-  }
-}
-
-.display-menu::-webkit-scrollbar {
-  display: none;
 }
