@@ -13,6 +13,7 @@ const selectors = {
   menuButton: "[data-test-label='header-menu-button']",
   menu: "[data-test-label='header-menu']",
   darkModeButton: "[data-test-label='dark-mode-button']"
+  banner: "[data-test-label='banner']"
 };
 
 describe('Landing', () => {
@@ -98,6 +99,55 @@ describe('Landing', () => {
       .contains('title', 'Mrugesh Mohapatra');
   });
 
+  it('the default banner text should be default if not authenticated', function () {
+    cy.get(selectors.banner).contains(
+      'Learn to code — free 3,000-hour curriculum'
+    );
+  });
+
+  it('the default banner text should link to the homepage', function () {
+    cy.get(selectors.banner)
+      .should('have.attr', 'href')
+      .should('equal', 'https://www.freecodecamp.org/');
+  });
+
+  it('the authenticated banner text should tell people to donate', function () {
+    cy.setCookie('jwt_access_token', 'dadadsdadsadasd');
+    cy.visit('/');
+    cy.get(selectors.banner).contains(
+      'Support our charity and our mission. Donate to freeCodeCamp.org.'
+    );
+  });
+
+  it('the authenticated banner link should link to the donate page', function () {
+    cy.setCookie('jwt_access_token', 'dadadsdadsadasd');
+    cy.visit('/');
+    cy.get(selectors.banner)
+      .should('have.attr', 'href')
+      .should('equal', 'https://www.freecodecamp.org/donate');
+  });
+
+  it('the donor banner text should thank people', function () {
+    cy.setCookie('jwt_access_token', 'dadadsdadsadasd');
+    cy.setCookie('isDonor', 'true');
+    cy.visit('/');
+    cy.get(selectors.banner).contains(
+      'Thank you for supporting freeCodeCamp through your donations.'
+    );
+  });
+
+  it('the donor banner should link to how to donate', function () {
+    cy.setCookie('jwt_access_token', 'dadadsdadsadasd');
+    cy.setCookie('isDonor', 'true');
+    cy.visit('/');
+    cy.get(selectors.banner)
+      .should('have.attr', 'href')
+      .should(
+        'equal',
+        'https://www.freecodecamp.org/news/how-to-donate-to-free-code-camp/'
+      );
+  });
+
   it("posts written by 'freeCodeCamp.org' should not show the `author-list`, which contain's the author's name and profile image", () => {
     cy.get(selectors.postCard)
       .contains('Common Technical Support Questions – freeCodeCamp FAQ')
@@ -111,7 +161,6 @@ describe('Landing', () => {
 
     cy.get(selectors.featureImage).should('have.length', numberOfPosts);
   });
-
   // Note: Remove this testing block once we migrate all posts to Hashnode
   context('Duplicate slugs', () => {
     it('should render the older Ghost-sourced post', () => {
