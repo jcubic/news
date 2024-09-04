@@ -40,7 +40,18 @@
           <i class="fa fa-external-link" aria-hidden="true"></i>
         </a>
       </li>
-
+      <li key='forum' class='nav-line'>
+        <a
+          class='nav-link nav-link-flex'
+          target="_blank"
+          href="{% t 'links:nav:forum' %}"
+          data-test-label="forum-button"
+        >
+          <span>{% t 'buttons.forum' %}</span>
+          <span class='sr-only'>{% t 'aria.opens-new-window' %}</span>
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+      </a>
+      </li>
       <li key='dark-mode' class='nav-line'>
          <button class="nav-link nav-link-flex nav-link-header" id="toggle-dark-mode" data-test-label="dark-mode-button">
         <span>{% t 'buttons.toggle-dark-mode' %}</span>

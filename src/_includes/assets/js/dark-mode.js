@@ -1,5 +1,9 @@
 function loadDarkModePreference() {
-  if (window.matchMedia('(prefers-color-scheme: dark)')?.matches) {
+  const theme = localStorage.getItem('theme');
+  if (
+    window.matchMedia('(prefers-color-scheme: dark)')?.matches ||
+    theme == 'dark'
+  ) {
     document.body.classList.add('dark-mode');
     document
       .getElementById('dark-mode-enabled')
@@ -17,10 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document
           .getElementById('dark-mode-enabled')
           .classList.replace('fa-square', 'fa-square-check');
+        localStorage.setItem('theme', 'dark');
       } else {
         document
           .getElementById('dark-mode-enabled')
           .classList.replace('fa-square-check', 'fa-square');
+        localStorage.setItem('theme', 'light');
       }
     });
 
