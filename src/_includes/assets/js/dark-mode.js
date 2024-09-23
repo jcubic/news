@@ -2,7 +2,8 @@ function loadDarkModePreference() {
   const theme = localStorage.getItem('theme');
   if (
     window.matchMedia('(prefers-color-scheme: dark)')?.matches ||
-    theme == 'dark'
+    theme == 'dark' ||
+    theme == 'night'
   ) {
     document.body.classList.add('dark-mode');
     document
