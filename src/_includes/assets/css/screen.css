@@ -171,7 +171,6 @@ body {
 /* ---------------------------------------------------------- */
 
 .site-nav {
-  z-index: 300;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -2229,7 +2228,6 @@ p.footer-donation a:hover {
 .tags-row > .tag:hover {
   background: var(--gray15);
   color: var(--gray75);
-  color: var(--gray75);
 }
 
 .tags-row a:hover {
@@ -2260,7 +2258,6 @@ p.footer-donation a:hover {
 button.cta-button,
 a.cta-button {
   width: content;
-  text-decoration: none;
   display: inline-block;
   outline: none;
   border: 3px solid var(--gray90);
