@@ -12,7 +12,7 @@ const selectors = {
   postPublishedTime: "[data-test-label='post-published-time']",
   menuButton: "[data-test-label='header-menu-button']",
   menu: "[data-test-label='header-menu']",
-  darkModeButton: "[data-test-label='dark-mode-button']"
+  darkModeButton: "[data-test-label='dark-mode-button']",
   banner: "[data-test-label='banner']"
 };
 
